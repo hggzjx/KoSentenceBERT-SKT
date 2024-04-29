@@ -241,5 +241,92 @@ Cluster  5
 }
 ```
 
+Sure, here is the translation of the text into Chinese:
+
+## Ko-Sentence-BERT-SKTBERT：使用孪生 SKT KoBERT 网络的句子嵌入
+
+**概述**
+
+Ko-Sentence-BERT-SKTBERT 是一种使用 SKT KoBERT 模型训练的 SentenceBERT 模型。该模型能够高精度地评估韩语句子的相似度和语义相关性。
+
+**特点**
+
+* 使用 SKT KoBERT 模型进行训练
+* 采用 SentenceBERT 架构
+* 高精度地评估韩语句子的相似度和语义相关性
+* 可用于 STS（语义文本相似度）任务、聚类任务等
+
+**安装**
+
+要安装 Ko-Sentence-BERT-SKTBERT，请执行以下步骤：
+
+1. 创建虚拟环境。
+2. 执行以下命令：
+
+```
+git clone https://github.com/BM-K/KoSentenceBERT_SKTBERT.git
+pip install -r requirements.txt
+```
+
+3. 将 transformer、tokenizers、sentence_transformers 目录移动到 opt/conda/lib/python3.7/site-packages/ 中。
+
+**模型训练**
+
+模型训练需要 KorNLUDatasets 数据集。KorNLUDatasets 应位于 KoSentenceBERT 目录内。
+
+执行以下命令仅使用 NLI 数据训练模型：
+
+```
+python training_nli.py
+```
+
+执行以下命令仅使用 STS 数据训练模型：
+
+```
+python training_sts.py
+```
+
+执行以下命令使用 NLI 数据训练的模型对 STS 数据进行微调：
+
+```
+python con_training_sts.py
+```
+
+**预训练模型**
+
+预训练模型可从以下 Google 云盘下载：
+
+[[Google Drive Sharing]]([https://drive.google.com/drive/folders/1fLYRi7W6J3rxt-KdGALBXMUS2W4Re7II?usp=sharing](https://drive.google.com/drive/folders/1fLYRi7W6J3rxt-KdGALBXMUS2W4Re7II?usp=sharing))
+
+**性能**
+
+Ko-Sentence-BERT-SKTBERT 在性能方面优于其他模型。
+
+| Model | Cosine Pearson | Cosine Spearman | Euclidean Pearson | Euclidean Spearman | Manhattan Pearson | Manhattan Spearman | Dot Pearson | Dot Spearman |
+|---|---|---|---|---|---|---|---|---|
+| NLl | 65.05 | 68.48 | 68.81 | 68.18 | 68.90 | 68.20 | 65.22 | 66.81 |
+| STS | **80.42** | **79.64** | **77.93** | 77.43 | **77.92** | 77.44 | **76.56** | **75.83** |
+| STS + NLI | 78.81 | 78.47 | 77.68 | **77.78** | 77.71 | **77.83** | 75.75 | 75.22 |
+
+**应用示例**
+
+Ko-Sentence-BERT-SKTBERT 可用于各种任务，包括：
+
+* **语义搜索**：搜索与给定句子相似的句子
+* **聚类**：根据语义相似性将句子分组
+
+**参考资料**
+
+* KoBERT： [https://github.com/SKTBrain/KoBERT](https://github.com/SKTBrain/KoBERT)
+* Sentence-BERT： [https://huggingface.co/sentence-transformers/bert-base-wikipedia-sections-mean-tokens](https://huggingface.co/sentence-transformers/bert-base-wikipedia-sections-mean-tokens)
+* KorNLI and KorSTS: New Benchmark Datasets for Korean Natural Language Understanding: [https://arxiv.org/abs/2004.03289](https://arxiv.org/abs/2004.03289)
+
+**其他**
+
+有关 Ko-Sentence-BERT-SKTBERT 的更多信息，请参阅以下 GitHub 存储库：
+
+BM-K/KoSentenceBERT_SKTBERT: [https://github.com/BM-K/KoSentenceBERT_SKTBERT](https://github.com/BM-K/KoSentenceBERT_SKTBERT)
+
+
 ## Reference Repo
 - [SKT KoBERT](https://github.com/SKTBrain/KoBERT)
